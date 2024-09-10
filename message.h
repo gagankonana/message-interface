@@ -47,7 +47,7 @@ public:
     Message(const std::string& _message, const std::time_t& _time, const std::shared_ptr<User>& _author) 
         : content(_message), time{_time}, author{_author} {}
     [[nodiscard]] const std::string get_content() { return content; }
-    [[nodisacrd]] const std::string get_author() {return author->get_username(); }
+    [[nodiscard]] const std::string get_author() {return author->get_username(); }
     [[nodiscard]] const std::time_t get_time() { return time; }
 private:
     std::string content;
