@@ -1,5 +1,7 @@
+#ifndef _LIBRARY_MESSAGE_SYSTEM_SRC_PRODUCE_H
+#define _LIBRARY_MESSAGE_SYSTEM_SRC_PRODUCE_H
+
 #include <SimpleAmqpClient/SimpleAmqpClient.h>
-#include <iostream>
 #include <string>
 
 class Produce {
@@ -10,7 +12,7 @@ public:
         channel->DeclareQueue(username, false, true, false, true);
     }
 
-    std::string send(const std::string& _message) { 
+    void send(const std::string& _message) { 
         auto message = AmqpClient::BasicMessage::Create(_message);
         message->ContentType("application/json");
         message->Type("XYZRequest");
@@ -20,10 +22,11 @@ public:
         headersTable.insert(std::pair<std::string, std::string>("Key-2", "value-2"));
         message->HeaderTable(headersTable);
         channel->BasicPublish("", username, message);
-        return _message;
     }
 
 private:
     AmqpClient::Channel::ptr_t channel; 
     std::string username;
 };
+
+#endif

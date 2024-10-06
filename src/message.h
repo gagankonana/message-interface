@@ -31,8 +31,7 @@ filter messages by sender, by reciepient
 #include <unordered_map>
 #include <vector>
 
-
-
+namespace v1{
 class User {
 public:
     User(const std::string& _username) : username{_username} {}
@@ -126,5 +125,5 @@ private:
     std::unordered_map<std::string, std::shared_ptr<User>> users;
     std::unordered_map<std::string, std::shared_ptr<Group>> groups;
 };
-
+}
 #endif

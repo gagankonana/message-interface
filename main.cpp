@@ -1,6 +1,6 @@
-#include "message.h"
+#include "src/message.h"
 #include <iostream>
-#include "interface.h"
+#include "src/interface.h"
 
 
 // int main() {

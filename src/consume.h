@@ -1,5 +1,7 @@
+#ifndef _LIBRARY_MESSAGE_SYSTEM_SRC_CONSUME_H
+#define _LIBRARY_MESSAGE_SYSTEM_SRC_CONSUME_H
+
 #include <SimpleAmqpClient/SimpleAmqpClient.h>
-#include <iostream>
 #include <string>
 
 class Consume {
@@ -8,10 +10,9 @@ public:
         channel = AmqpClient::Channel::Create("localhost", 5672, "guest", "guest", "message-system", 131072);
         channel->DeclareQueue(username, false, true, false, true);
         channel->BasicConsume(username, "consumer-tag", true, false, false);
-        
     }
 
-    std::string read() {
+    [[nodiscard]] std::string const read() {
         AmqpClient::Envelope::ptr_t envelope;
         if (channel->BasicConsumeMessage("consumer-tag", envelope, 0)){
             std::string message_body = envelope->Message()->Body();
@@ -24,3 +25,5 @@ public:
 private:
     AmqpClient::Channel::ptr_t channel; 
 };
+
+#endif
