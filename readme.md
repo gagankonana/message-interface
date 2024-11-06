@@ -1,6 +1,6 @@
 # Messaging System
 
-This project implements a basic messaging system that supports user-to-user and user-to-group messaging with features like message filtering and timed deletion.
+This project implements a basic messaging system that supports user-to-user and user-to-group messaging.
 
 ## Features
 
